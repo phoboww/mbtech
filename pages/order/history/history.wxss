@@ -1,0 +1,73 @@
+.container {
+  padding: 30rpx;
+  background: #f5f1e6;  /* 米色背景 */
+  min-height: 100vh;
+}
+
+.order-list {
+  width: 100%;
+}
+
+.order-item {
+  background: #fff8e7;  /* 浅米色背景 */
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid rgba(139, 115, 85, 0.1);
+}
+
+.order-time {
+  color: #8b7355;  /* 中咖啡色 */
+  font-size: 24rpx;
+}
+
+.order-status {
+  color: #4a3728;  /* 深咖啡色 */
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.order-content {
+  padding: 20rpx 0;
+}
+
+.dish-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.dish-name {
+  flex: 1;
+  color: #4a3728;  /* 深咖啡色 */
+  font-size: 28rpx;
+}
+
+.dish-count {
+  color: #8b7355;  /* 中咖啡色 */
+  margin: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.dish-price {
+  color: #4a3728;  /* 深咖啡色 */
+  font-size: 28rpx;
+}
+
+.order-footer {
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(139, 115, 85, 0.1);
+  text-align: right;
+}
+
+.order-total {
+  color: #4a3728;  /* 深咖啡色 */
+  font-size: 32rpx;
+  font-weight: bold;
+} 

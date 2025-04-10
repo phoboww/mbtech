@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="order-list">
+    <view class="order-item" wx:for="{{orders}}" wx:key="id">
+      <view class="order-header">
+        <text class="order-time">{{item.createTime}}</text>
+        <text class="order-status">{{item.status === 'pending' ? '待处理' : '已完成'}}</text>
+      </view>
+      <view class="order-content">
+        <view class="dish-item" wx:for="{{item.items}}" wx:key="id" wx:for-item="dish">
+          <text class="dish-name">{{dish.name}}</text>
+          <text class="dish-count">x{{dish.count}}</text>
+          <text class="dish-price">¥{{dish.price * dish.count}}</text>
+        </view>
+      </view>
+      <view class="order-footer">
+        <text class="order-remark" wx:if="{{item.remark}}">备注：{{item.remark}}</text>
+        <text class="order-total">合计：¥{{item.totalPrice}}</text>
+      </view>
+    </view>
+  </view>
+</view> 

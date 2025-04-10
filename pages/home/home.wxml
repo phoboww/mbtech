@@ -1,0 +1,26 @@
+<view class="container">
+  <!-- 顶部咖啡师图片 -->
+  <view class="header">
+    <text class="title">Million's Kitchen</text>
+    <view class="image-container" bindtap="uploadImage" bindlongpress="deleteImage">
+      <image 
+        class="barista-img" 
+        src="{{baristaImage || '/images/default-barista.png'}}" 
+        mode="aspectFit"
+      />
+      <view class="upload-hint" wx:if="{{!baristaImage}}">
+        <text>点击上传图片</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 服务选项 -->
+  <view class="service-options">
+    <view class="service-item" bindtap="goToOrder">
+      <text>扫码点单</text>
+    </view>
+    <view class="service-item" bindtap="goToDelivery">
+      <text>外卖配送</text>
+    </view>
+  </view>
+</view> 

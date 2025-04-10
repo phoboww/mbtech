@@ -1,0 +1,123 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部导航 -->
+  <view class="nav-header">
+    <!-- 店铺头图 -->
+    <view class="shop-banner" bindtap="uploadShopBanner">
+      <image wx:if="{{shopBanner}}" 
+             src="{{shopBanner}}" 
+             mode="aspectFill" 
+             class="banner-image"/>
+      <view wx:else class="banner-upload-hint">
+        <text>点击上传店铺头图</text>
+      </view>
+    </view>
+
+    <view class="store-info">
+      <text class="store-name">我的店铺 ></text>
+      <view class="delivery-options">
+        <text class="option active">自取</text>
+        <text class="option">配送</text>
+      </view>
+    </view>
+
+    <view class="coupon-bar">
+      <text>优惠券</text>
+      <view class="coupon-list">
+        <text class="coupon">满50减2</text>
+        <text class="coupon">满100减10</text>
+      </view>
+      <text class="more-coupons">去获取优惠券 ></text>
+    </view>
+
+    <view class="menu-nav">
+      <view class="nav-tabs">
+        <text class="tab active">订单</text>
+        <text class="tab" bindtap="showReviews">评价</text>
+        <text class="tab">店铺</text>
+      </view>
+      <view class="search-wrapper">
+        <input class="search-input" 
+               type="text" 
+               placeholder="请输入产品名称"
+               value="{{searchValue}}"
+               bindinput="onSearchInput"/>
+        <view wx:if="{{showClearButton}}" class="clear-button" bindtap="clearSearch">清除</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索结果列表 -->
+  <scroll-view wx:if="{{searchResults.length > 0}}" 
+                class="search-results" 
+                scroll-y>
+    <view class="result-item" wx:for="{{searchResults}}" wx:key="id">
+      <image class="result-img" src="{{item.image}}" mode="aspectFill"/>
+      <view class="result-info">
+        <text class="result-name">{{item.name}}</text>
+        <text class="result-price">¥{{item.price}}</text>
+      </view>
+      <view class="add-to-cart" bindtap="addToCart" data-dish="{{item}}">加入购物车</view>
+    </view>
+  </scroll-view>
+
+  <!-- 主要内容区域 -->
+  <view class="content">
+    <!-- 左侧分类列表 -->
+    <view class="category-list">
+      <view class="category-item {{index === currentCategory ? 'active' : ''}}" 
+            wx:for="{{categories}}" 
+            wx:key="index"
+            bindtap="switchCategory"
+            data-index="{{index}}">
+        {{item.name}}
+        <view class="category-delete" catchtap="deleteCategory" data-index="{{index}}">×</view>
+      </view>
+      <view class="category-item add-category" bindtap="addCategory">+ 添加分类</view>
+    </view>
+
+    <!-- 右侧菜品列表 -->
+    <scroll-view class="dish-list" scroll-y>
+      <view class="dishes">
+        <view class="dish-item" wx:for="{{currentDishes}}" wx:key="id">
+          <image class="dish-img" src="{{item.image}}" mode="aspectFill"/>
+          <view class="dish-info">
+            <text class="dish-name">{{item.name}}</text>
+            <text class="dish-price">¥{{item.price}}</text>
+          </view>
+          <view class="add-to-cart" bindtap="addToCart" data-dish="{{item}}">加入购物车</view>
+          <view class="delete-dish" bindtap="deleteDish" data-dish-id="{{item.id}}">×</view>
+        </view>
+        <view class="add-dish-btn" bindtap="onAddDish" data-category-index="{{currentCategory}}">
+          + 添加菜品
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 在nav-header后面添加 -->
+  <view class="reviews-list" wx:if="{{showReviewsList}}">
+    <view class="reviews-header">
+      <text class="reviews-title">顾客评价</text>
+      <text class="reviews-rating">5.0</text>
+    </view>
+    
+    <scroll-view class="reviews-content" scroll-y>
+      <view class="review-item" wx:for="{{reviews}}" wx:key="id">
+        <view class="review-user">
+          <image class="review-avatar" src="{{item.avatar}}" mode="aspectFill"/>
+          <view class="review-user-info">
+            <text class="review-nickname">{{item.nickname}}</text>
+            <view class="review-stars">
+              <text class="star" wx:for="{{item.rating}}" wx:key="*this">⭐</text>
+            </view>
+          </view>
+          <text class="review-date">{{item.date}}</text>
+        </view>
+        <view class="review-text">{{item.content}}</view>
+      </view>
+    </scroll-view>
+    
+    <view class="reviews-close" bindtap="hideReviews">关闭</view>
+  </view>
+</view>

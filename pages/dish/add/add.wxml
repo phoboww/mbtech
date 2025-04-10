@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="form-group">
+    <view class="form-item">
+      <text class="label">菜品名称</text>
+      <view class="input-wrapper">
+        <input class="input" 
+               type="text" 
+               placeholder="请输入菜品名称" 
+               value="{{name}}" 
+               bindinput="onNameInput"/>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">价格</text>
+      <view class="price-input-wrapper">
+        <input class="input" 
+               type="digit" 
+               placeholder="请输入价格" 
+               value="{{price}}" 
+               bindinput="onPriceInput"/>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="label">图片</text>
+      <view class="image-upload" bindtap="chooseImage">
+        <image wx:if="{{image}}" 
+               src="{{image}}" 
+               mode="aspectFill" 
+               class="preview-image"/>
+        <view wx:else class="upload-hint">
+          <text>点击上传图片</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-submit" bindtap="submitDish">保存</view>
+</view> 

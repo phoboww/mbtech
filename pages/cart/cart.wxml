@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="cart-list">
+    <view class="cart-item" wx:for="{{cartItems}}" wx:key="id">
+      <text class="item-name">{{item.name}}</text>
+      <view class="item-controls">
+        <text class="btn-decrease" bindtap="decreaseCount" data-id="{{item.id}}">-</text>
+        <text class="item-count">{{item.count}}</text>
+        <text class="btn-increase" bindtap="increaseCount" data-id="{{item.id}}">+</text>
+      </view>
+      <text class="item-price">¥{{item.price * item.count}}</text>
+    </view>
+  </view>
+
+  <view class="cart-footer">
+    <text class="total-price">合计：¥{{totalPrice}}</text>
+    <view class="btn-submit" bindtap="submitOrder">提交订单</view>
+  </view>
+</view> 

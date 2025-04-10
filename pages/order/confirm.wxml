@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="order-items">
+    <view class="section-title">订单详情</view>
+    <view class="item" wx:for="{{orderItems}}" wx:key="id">
+      <text class="name">{{item.name}}</text>
+      <text class="count">x{{item.count}}</text>
+      <text class="price">¥{{item.price * item.count}}</text>
+    </view>
+  </view>
+
+  <view class="total-section">
+    <text>合计：</text>
+    <text class="total-price">¥{{totalPrice}}</text>
+  </view>
+
+  <view class="remark-section">
+    <view class="section-title">备注</view>
+    <textarea class="remark-input" 
+              placeholder="请输入备注信息" 
+              bindinput="onRemarkInput"
+              value="{{remark}}"/>
+  </view>
+
+  <view class="btn-submit" bindtap="submitOrder">确认下单</view>
+</view> 
